@@ -75,11 +75,27 @@ class TestPanierAchat:
             self.panier.retirer_article(self.NOM_ARTICLE)
 
     # TODO: Complétez les 3 tests suivants
-    # def test_etant_donne_panier_vide_quand_vider_panier_alors_panier_est_vide():
 
+    def test_etant_donne_panier_vide_quand_vider_panier_alors_panier_est_vide(self):
+        # Action
+        self.panier.vider_panier()
 
-    # def test_etant_donne_panier_avec_article_existants_quand_article_existe_alors_retourne_vrai():
+        # Validation
+        assert len(self.panier.req_articles()) == 0
 
+    def test_etant_donne_panier_avec_article_existants_quand_article_existe_alors_retourne_vrai(self):
+        # Etant donné
+        self.panier.ajouter_article(self.NOM_ARTICLE, self.PRIX_ARTICLE)
 
-    # def test_etant_donne_panier_vide_quand_article_existe_alors_retourne_faux():
+        # Action
+        article_existe = self.panier.article_existe(self.NOM_ARTICLE)
 
+        # Validation
+        assert article_existe
+
+    def test_etant_donne_panier_vide_quand_article_existe_alors_retourne_faux(self):
+        # Action
+        article_existe = self.panier.article_existe(self.NOM_ARTICLE)
+
+        # Validation
+        assert not article_existe
